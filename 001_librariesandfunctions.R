@@ -6,6 +6,7 @@ library(survey) # survey data
 library(lavaan.survey) # survey CFA/MI
 library(semTools) # survey CFA/MI
 library(MBESS) # reliability
+library(gtsummary) #tables
 
 equiv_chi=function(alpha=.05,chi,df,m,N_sample,popRMSEA=.08){
   Fml<-chi/(N_sample-m)
