@@ -17,4 +17,19 @@ equiv_chi=function(alpha=.05,chi,df,m,N_sample,popRMSEA=.08){
   res
 } # for Counsell et al equivalence test
 
+RDR = function(x2_r, x2_pop, df_r, df_pop, n, k){
+  
+  noncent_pop = x2_pop - df_pop
+   
+  noncent_r = x2_r - df_r
+  
+  delta_F = abs(noncent_r - noncent_pop) / n
+  
+  RDR = sqrt(delta_F / df_r) * sqrt(k)
+  
+  RDR
+}
+
+
+
 options(survey.lonely.psu="adjust") # For using survey data
