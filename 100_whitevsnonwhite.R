@@ -3,7 +3,7 @@
 ################################
 
 design <- svydesign(ids = ~ `_PSU`, weights = ~finalweight, strata = ~`_STSTR`, 
-                    nest = TRUE, data = BRFSS2018_Analysis)
+                    nest = TRUE, data = BRFSS2018_Analysis_3000)
 #############
 #### CFA ####
 #############
@@ -86,6 +86,11 @@ summary(cfa_race2cat.metric.survey, fit.measures = T, standardized = T)
 
 compareFit(cfa_race2cat.configural.survey, cfa_race2cat.metric.survey)
 
+anova(cfa_race2cat.configural.survey, cfa_race2cat.metric.survey)
+
+RDR(T_A = 451.58, T_B = 443.63, df_A = 7, df_B = 4, G = 2, N = 3000)
+# 0.03
+
 # No sig difference chisq (3) = .53, p = .91
 
 equiv_chi(0.05, .53, 3, 2, 6448, .05)
@@ -105,7 +110,7 @@ cfa_race2cat.scalar.survey <- lavaan.survey(cfa_race2cat.scalar, design)
 
 summary(cfa_race2cat.scalar.survey, fit.measures = T, standardized = T)
 
-compareFit(cfa_race2cat.metric.survey, cfa_race2cat.scalar.survey)
+anova(cfa_race2cat.metric.survey, cfa_race2cat.scalar.survey)
 
 # sig difference, chisq (3) = 20.48, p = .004
 

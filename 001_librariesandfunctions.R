@@ -17,19 +17,24 @@ equiv_chi=function(alpha=.05,chi,df,m,N_sample,popRMSEA=.08){
   res
 } # for Counsell et al equivalence test
 
-RDR = function(x2_r, x2_pop, df_r, df_pop, n, k){
-  
-  noncent_pop = x2_pop - df_pop
-   
-  noncent_r = x2_r - df_r
-  
-  delta_F = abs(noncent_r - noncent_pop) / n
-  
-  RDR = sqrt(delta_F / df_r) * sqrt(k)
-  
-  RDR
+
+# T_A is the larger Chi-square value
+# 
+# T_B is the smaller Chi-square value
+# 
+# Df_A and Df_B are the corresponding degrees of freedom
+# 
+# G is the number of groups
+
+RDR = function(T_A, T_B, df_A, df_B, G, N){
+
+T_chisqdiff=T_A-T_B
+
+DF_chisqdiff=df_A-df_B
+
+RDR=sqrt(G*(T_chisqdiff-DF_chisqdiff)/((N-G)*DF_chisqdiff))
+
+RDR
 }
-
-
 
 options(survey.lonely.psu="adjust") # For using survey data
