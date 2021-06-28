@@ -32,13 +32,19 @@ cfa_asianwhite.metric.survey <- lavaan.survey(cfa_asianwhite.metric, asianwhite_
 
 summary(cfa_asianwhite.metric.survey, fit.measures = T, standardized = TRUE)
 
-compareFit(cfa_asianwhite.configural.survey, cfa_asianwhite.metric.survey)
+anova(cfa_asianwhite.configural.survey, cfa_asianwhite.metric.survey)
 
 # No sig difference chisq (2) = .47 p = .78
 
 equiv_chi(0.05, .47, 2, 2, 3612, .05)
 
 # sig diff, go to scalar
+
+# Sample size is 2854 + 577 
+
+RDR(431, 423, 7, 4, 2, 3431)
+
+# .03
 
 ## Scalar ##
 
@@ -50,13 +56,17 @@ cfa_asianwhite.scalar.survey <- lavaan.survey(cfa_asianwhite.scalar, asianwhite_
 
 summary(cfa_asianwhite.scalar.survey, fit.measures = T, standardized = TRUE)
 
-compareFit(cfa_asianwhite.metric.survey, cfa_asianwhite.scalar.survey)
+anova(cfa_asianwhite.metric.survey, cfa_asianwhite.scalar.survey)
 
 # no sig diff, chisq (2) = .52, p = .77
 
 equiv_chi(0.05, .52, 2, 2, 3612, .05)
 
 # sig diff, could proceed but will stop here
+
+RDR(441, 431, 10, 3, 2, 3431)
+
+# .02
 
 ## Black vs White
 
@@ -89,13 +99,19 @@ cfa_blackwhite.metric.survey <- lavaan.survey(cfa_blackwhite.metric, blackwhite_
 summary(cfa_blackwhite.metric.survey, fit.measures = T, standardized = TRUE)
 
 
-compareFit(cfa_blackwhite.configural.survey, cfa_blackwhite.metric.survey)
+anova(cfa_blackwhite.configural.survey, cfa_blackwhite.metric.survey)
 
 # No sig difference chisq (2) = .65 p = .72
 
 equiv_chi(0.05, .65, 2, 2, 4002, .05)
 
 # sig diff, go to scalar
+
+# Sample size is 2854 + 949
+
+RDR(287, 283, 7, 4, 2, 3803)
+
+#.01
 
 ## Scalar ##
 
@@ -108,13 +124,17 @@ cfa_blackwhite.scalar.survey <- lavaan.survey(cfa_blackwhite.scalar, blackwhite_
 summary(cfa_blackwhite.scalar.survey, fit.measures = T, standardized = TRUE)
 
 
-compareFit(cfa_blackwhite.metric.survey, cfa_blackwhite.scalar.survey)
+anova(cfa_blackwhite.metric.survey, cfa_blackwhite.scalar.survey)
 
 # sig diff, chisq (2) = 19.86, p = .77
 
 equiv_chi(0.05, 19.86, 2, 2, 4002, .05)
 
 # no sig diff, go to scalar
+
+RDR(374, 287, 10, 7, 2, 3803)
+
+#.12
 
 ## Partial Scalar ##
 
@@ -132,6 +152,11 @@ equiv_chi(0.05, 6.22, 2, 2, 4002, .05)
 
 summary(cfa_blackwhite.scalar.partial1.survey, fit.measures = T, standardized = TRUE)
 
+anova(cfa_blackwhite.metric.survey, cfa_blackwhite.scalar.partial1.survey)
+
+RDR(358, 287, 9, 7, 2, 3803)
+
+#.13
 
 ## Native Hawaiian or other Pacific Islander vs White ##
 
@@ -163,13 +188,19 @@ cfa_hawaiiwhite.metric.survey <- lavaan.survey(cfa_hawaiiwhite.metric, hawaiiwhi
 
 summary(cfa_hawaiiwhite.metric.survey, fit.measures = T, standardized = TRUE)
 
-compareFit(cfa_hawaiiwhite.configural.survey, cfa_hawaiiwhite.metric.survey)
+anova(cfa_hawaiiwhite.configural.survey, cfa_hawaiiwhite.metric.survey)
 
 # No sig difference chisq (2) = .65 p = .72
 
 equiv_chi(0.05, .51, 2, 2, 3564, .05)
 
 # sig diff, go to scalar
+
+# sample size is 2854 + 530
+
+RDR(284, 264, 7, 4, 2, 3384)
+
+#.06
 
 ## Scalar ##
 
@@ -181,13 +212,17 @@ cfa_hawaiiwhite.scalar.survey <- lavaan.survey(cfa_hawaiiwhite.scalar, hawaiiwhi
 
 summary(cfa_hawaiiwhite.scalar.survey, fit.measures = T, standardized = T)
 
-compareFit(cfa_hawaiiwhite.metric.survey, cfa_hawaiiwhite.scalar.survey)
+anova(cfa_hawaiiwhite.metric.survey, cfa_hawaiiwhite.scalar.survey)
 
 # sig diff, chisq (2) = 14.72, p = <.001
 
 equiv_chi(0.05, 14.72, 2, 2, 3564, .05)
 
 # no sig diff, go to partial scalar
+
+RDR(323, 284, 10, 7, 2, 3384)
+
+#.08
 
 ## Partial Scalar ##
 
@@ -200,7 +235,11 @@ cfa_hawaiiwhite.scalar.partial1.survey <- lavaan.survey(cfa_hawaiiwhite.scalar.p
 
 summary(cfa_hawaiiwhite.scalar.partial1.survey, fit.measures = T, standardized = T)
 
-compareFit(cfa_hawaiiwhite.metric.survey, cfa_hawaiiwhite.scalar.partial1.survey)
+anova(cfa_hawaiiwhite.metric.survey, cfa_hawaiiwhite.scalar.partial1.survey)
+
+RDR(317, 284, 9, 7, 2, 3384)
+
+#.10
 
 ## Multiracial vs White ##
 
@@ -232,13 +271,19 @@ cfa_multiwhite.metric.survey <- lavaan.survey(cfa_multiwhite.metric, multiwhite_
 
 summary(cfa_multiwhite.metric.survey, fit.measures = T, standardized = TRUE)
 
-compareFit(cfa_multiwhite.configural.survey, cfa_multiwhite.metric.survey)
+anova(cfa_multiwhite.configural.survey, cfa_multiwhite.metric.survey)
 
 # No sig difference chisq (2) = 2.29 p = .32
 
 equiv_chi(0.05, 2.29, 3, 2, 3539, .05)
 
 # sig diff, go to scalar
+
+# Sample size is 2854 + 511
+
+RDR(418, 412, 7, 4, 2, 3365)
+
+#.02
 
 ## Scalar ##
 
@@ -250,9 +295,13 @@ cfa_multiwhite.scalar.survey <- lavaan.survey(cfa_multiwhite.scalar, multiwhite_
 
 summary(cfa_multiwhite.scalar.survey, fit.measures = T, standardized = TRUE)
 
-compareFit(cfa_multiwhite.metric.survey, cfa_multiwhite.scalar.survey)
+anova(cfa_multiwhite.metric.survey, cfa_multiwhite.scalar.survey)
 
 equiv_chi(0.05, 2.51, 2, 2, 3564, .05)
+
+RDR(426, 418, 10, 7, 2, 3365)
+
+#.03
 
 ## Scalar met
 
@@ -287,13 +336,19 @@ cfa_hispanicwhite.metric.survey <- lavaan.survey(cfa_hispanicwhite.metric, hispa
 summary(cfa_hispanicwhite.metric.survey, fit.measures = T, standardized = TRUE)
 
 
-compareFit(cfa_hispanicwhite.configural.survey, cfa_hispanicwhite.metric.survey)
+anova(cfa_hispanicwhite.configural.survey, cfa_hispanicwhite.metric.survey)
 
 # No sig difference chisq (2) = 5.48 p = .06
 
 equiv_chi(0.05, 2.29, 2, 2, 3731, .05)
 
 # sig diff, go to scalar
+
+# Sample size is 2854 + 685
+
+RDR(326, 300, 7, 4, 2, 3539)
+
+#.07
 
 ## Scalar ##
 
@@ -305,8 +360,12 @@ cfa_hispanicwhite.scalar.survey <- lavaan.survey(cfa_hispanicwhite.scalar, hispa
 
 summary(cfa_hispanicwhite.scalar.survey, fit.measures = T, standardized = T)
 
-compareFit(cfa_hispanicwhite.metric.survey, cfa_hispanicwhite.scalar.survey)
+anova(cfa_hispanicwhite.metric.survey, cfa_hispanicwhite.scalar.survey)
 
 # sig diff, chisq (2) = 7.34, p = <.001
 
 equiv_chi(0.05, 7.34, 2, 2, 3564, .05)
+
+RDR(336, 326, 10, 7, 2, 3539)
+
+#.04

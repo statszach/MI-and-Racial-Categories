@@ -84,12 +84,14 @@ cfa_race2cat.metric.survey <- lavaan.survey(cfa_race2cat.metric, design)
 
 summary(cfa_race2cat.metric.survey, fit.measures = T, standardized = T)
 
-compareFit(cfa_race2cat.configural.survey, cfa_race2cat.metric.survey)
-
 anova(cfa_race2cat.configural.survey, cfa_race2cat.metric.survey)
 
-RDR(T_A = 451.58, T_B = 443.63, df_A = 7, df_B = 4, G = 2, N = 3000)
-# 0.03
+
+# Sample size is 2854 + 3252 after survey weights
+
+
+RDR(T_A = 451.58, T_B = 443.63, df_A = 7, df_B = 4, G = 2, N = 6106)
+# 0.02
 
 # No sig difference chisq (3) = .53, p = .91
 
@@ -119,6 +121,10 @@ equiv_chi(0.05, 20.48, 3, 2, 6448, .05)
 #     chi         Fml   popep popdelt      pval
 # 1 20.48 0.003177164 0.00375 24.1725 0.2727035
 
+RDR(541, 452, 10, 7, 2, 6106)
+
+#0.10
+
 # non sig, scalar not achieved. proceed to partial
 
 ## Partial Scalar ##
@@ -133,20 +139,30 @@ cfa_race2cat.scalar.partial1.survey <- lavaan.survey(cfa_race2cat.scalar.partial
 
 summary(cfa_race2cat.scalar.partial1.survey, fit.measures = T)
 
-compareFit(cfa_race2cat.metric.survey, cfa_race2cat.scalar.partial1.survey)
+anova(cfa_race2cat.metric.survey, cfa_race2cat.scalar.partial1.survey)
 
 # When freeing STOPWORY, sig difference (p = .05)
 equiv_chi(.05, 5.96, 2, 2, 6448, .05)
 
+RDR(539, 452, 9, 7, 2, 6106)
+
+#0.12
+
 # When freeing STOPWORY, partial achieved
 
+##########################
 ## Sensitivity Analysis ##
+##########################
+
+design1000 <- svydesign(ids = ~ `_PSU`, weights = ~finalweight, strata = ~`_STSTR`, 
+                    nest = TRUE, data = BRFSS2018_Analysis_1000)
+
 
 cfa_race2cat.configural.1000 <- cfa(cfa_model, BRFSS2018_Analysis_1000, group = "race_2cat", ordered = c("ADPLEAS1", "ADDOWN1", "FEELNERV", "STOPWORY"))
 
 summary(cfa_race2cat.configural.1000, fit.measures = T, standardized = T)
 
-cfa_race2cat.configural.1000.survey <- lavaan.survey(cfa_race2cat.configural.1000, design)
+cfa_race2cat.configural.1000.survey <- lavaan.survey(cfa_race2cat.configural.1000, design1000)
 
 summary(cfa_race2cat.configural.1000.survey, fit.measures = T, standardized = T)
 
@@ -156,7 +172,7 @@ cfa_race2cat.metric.1000 <-cfa(cfa_model, BRFSS2018_Analysis_1000, group = "race
 
 summary(cfa_race2cat.metric.1000, fit.measures = T, standardized = T)
 
-cfa_race2cat.metric.1000.survey <- lavaan.survey(cfa_race2cat.metric.1000, design)
+cfa_race2cat.metric.1000.survey <- lavaan.survey(cfa_race2cat.metric.1000, design1000)
 
 compareFit(cfa_race2cat.configural.1000.survey, cfa_race2cat.metric.1000.survey)
 
@@ -166,7 +182,7 @@ cfa_race2cat.scalar.1000 <-cfa(cfa_model, BRFSS2018_Analysis_1000, group = "race
 
 summary(cfa_race2cat.scalar.1000, fit.measures = T, standardized = T)
 
-cfa_race2cat.scalar.1000.survey <- lavaan.survey(cfa_race2cat.scalar.1000, design)
+cfa_race2cat.scalar.1000.survey <- lavaan.survey(cfa_race2cat.scalar.1000, design1000)
 
 compareFit(cfa_race2cat.metric.1000.survey, cfa_race2cat.scalar.1000.survey)
 
@@ -183,7 +199,7 @@ cfa_race2cat.scalar1000.partial1 <-cfa(cfa_model, BRFSS2018_Analysis_1000, group
 
 summary(cfa_race2cat.scalar1000.partial1, fit.measures = T)
 
-cfa_race2cat.scalar1000.partial1.survey <- lavaan.survey(cfa_race2cat.scalar1000.partial1, design)
+cfa_race2cat.scalar1000.partial1.survey <- lavaan.survey(cfa_race2cat.scalar1000.partial1, design1000)
 
 compareFit(cfa_race2cat.metric.1000.survey, cfa_race2cat.scalar1000.partial1.survey)
 
